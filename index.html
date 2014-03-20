@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head profile="http://gmpg.org/xfn/11">
+<title>
+  Which member of the band are you?</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="description" content="A 'Which member are you' quiz for bands to add to their site." />
+<script type='text/javascript' src='js/jquery.js'></script>
+<script type='text/javascript' src='js/bandquiz.js'></script>
+<link rel='stylesheet' href='css/bandquiz.css' type='text/css' media='all' />
+
+</head>
+<body>
+<div id="content" class="grid_8">
+		<h2>Which member of The Band are you?</h2>
+		<p>Take our quiz today to find out which member you are!</p>
+		<div id="quiz">
+			<div id="questions"></div>
+			<div class="calculate">
+				<span id="calculate" class="btn" onclick='Calculate()'>Calculate</span>
+			</div>
+			<div id="error">
+			</div>
+			<div id="results" style="display:none;">
+				<h1>You are <span id="memberSpan"></span></h1>
+				<img id="memberImg" src="" />
+				<!--<p>Share on Facebook</p>-->
+				<span class="btn" onclick='reset()'>Try Again</span>
+			</div>
+		</div>
+		
+	<div id="footer">
+		<a id="actionLink" href="http://www.dothemaneuver.com/quiz" target="_blank">See the quiz in action</a>
+		<p>Copyright &copy; 2014 <a href="http://www.chriskingwebdesign.com/">Chris King Web Design</a><br/>
+		  Contact: <a href="mailto:chriskingwebdesign@gmail.com">chriskingwebdesign@gmail.com</a>		
+		</p>
+	</div>
+  
+</div>
+</body>
+</html>
