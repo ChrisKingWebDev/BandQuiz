@@ -3,10 +3,33 @@
 			var imageFolder = "images/";
 			
 			//the file extensions used for the images
-			var fileExt = ".jpg";
+			//if you are sharing on facebook, pngs are recommended because facebook will resize the images
+			var fileExt = ".png";
 			
 			//All member names will have spaces and periods removed from their names and used as the name of the results image
 			//For example: Chelsey becomes /images/quizresults/Chelsey.jpg and Mr. King becomes /images/quizresults/MrKing.jpg
+			
+			
+			//share on facebook
+			
+			//set this to true if you would like to activate the share on facebook link after the quiz is done
+			var shareOnFB = true;
+			
+			var facebookAPPID = "XXXXXXX";
+			
+			//the domain of the site you are sharing, required for the image url
+			//this must be registered with your facebook app if you have enabled sharing
+			var shareDomain = "http://www.mybandpage.com/";
+			
+			//this is the url of the site you would like to share on FB, probably the page this quiz in on, but could be something else. Uses the domain from above
+			var shareURL = "quiz";
+			
+			//the title of the share
+			var shareTitle = "Which member of The Band are you?";
+			
+			//the message of the share will say "I got Chelsey!", if you would like a message below that, use this parameter, or leave it blank
+			var addlMsg = "Find out which member of The Maneuver you are!";
+			
 			
 			//Create an object that contains all of the members of the band each having a score of 0
 			var members = {
@@ -180,7 +203,7 @@
 					//replace any special characters for their filename
 					memberFilename = selectedMember.replace(/ /g,"").replace(/\./g,"");
 					
-					//hide the questions and the calulate button
+					//hide the questions and the calculate button
 					jQuery("#questions").hide();
 					jQuery("#calculate").hide();
 					
@@ -191,8 +214,37 @@
 					
 					//scroll to the top of the page because the content is shorter now
 					jQuery(window).scrollTop(jQuery("#results"));
+					
+					if(shareOnFB == true){
+						jQuery("#fbLink").attr("href",shareHREF).show();
+						
+					}
 				}
 			}
+			
+			//function to share on facebook
+			function facebookShare(){
+				memberFilename = "Tino";
+				selectedMember = "Tino";
+				FB.ui(
+				  {
+					method: 'feed',
+					name: shareTitle,
+					link: shareDomain+shareURL,
+					picture: shareDomain+imageFolder+memberFilename+fileExt,
+					caption: 'I Got '+selectedMember,
+					description: addlMsg
+				  },
+				  function(response) {
+					if (response && response.post_id) {
+					  alert('Post was published.');
+					} else {
+					  alert('Post was not published.');
+					}
+				  }
+				);
+			}
+			
 			
 			//helper function to randomize DOM elements in jQuery
 			(function($) {
