@@ -8,10 +8,27 @@
 <script type='text/javascript' src='js/jquery.js'></script>
 <script type='text/javascript' src='js/bandquiz.js'></script>
 <link rel='stylesheet' href='css/bandquiz.css' type='text/css' media='all' />
-
 </head>
 <body>
-<div id="content" class="grid_8">
+<div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : facebookAPPID,
+          status     : true,
+          xfbml      : true
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+<div id="content">	
 		<h2>Which member of The Band are you?</h2>
 		<p>Take our quiz today to find out which member you are!</p>
 		<div id="quiz">
@@ -24,7 +41,7 @@
 			<div id="results" style="display:none;">
 				<h1>You are <span id="memberSpan"></span></h1>
 				<img id="memberImg" src="" />
-				<!--<p>Share on Facebook</p>-->
+				<a id="fbLink" style="display:none;" onclick="facebookShare()">Share on Facebook</a>
 				<span class="btn" onclick='reset()'>Try Again</span>
 			</div>
 		</div>
